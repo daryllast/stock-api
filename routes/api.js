@@ -28,8 +28,13 @@ router.post('/portfolio', async function(req, res, next) {
     res.json(item)
 });
 
-router.delete('/portfolio/:id', function(req, res, next) {
-    res.json({deleteRowInTheTable: true})
+router.delete('/portfolio/:id', async function(req, res, next) {
+    await Portfolio.destroy({
+        where: {
+          id: req.params.id
+        }
+      })
+      res.json({success:true})
 });
 
 /* GET home page. */
