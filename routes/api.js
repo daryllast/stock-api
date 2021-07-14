@@ -11,6 +11,7 @@ const {Portfolio, Wallet} = require('../lib/models');
 
 
 router.get('/search/:symbol', async function(req, res, next) {
+    console.log('1')
     console.log('the req.params are', req.params)
     const data = await yahooStockPrices.getCurrentData(req.params.symbol);
     res.json(data)
